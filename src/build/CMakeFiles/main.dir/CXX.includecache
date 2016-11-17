@@ -1,0 +1,60 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/joana/Documents/Image Processing/Hw3/Submit/src/csv.cpp
+vector
+-
+string
+-
+iostream
+-
+fstream
+-
+cstdlib
+-
+sstream
+-
+csv.h
+/home/joana/Documents/Image Processing/Hw3/Submit/src/csv.h
+
+/home/joana/Documents/Image Processing/Hw3/Submit/src/csv.h
+vector
+-
+
+/home/joana/Documents/Image Processing/Hw3/Submit/src/main.cpp
+iostream
+-
+unistd.h
+-
+csv.h
+/home/joana/Documents/Image Processing/Hw3/Submit/src/csv.h
+watershed.h
+/home/joana/Documents/Image Processing/Hw3/Submit/src/watershed.h
+
+/home/joana/Documents/Image Processing/Hw3/Submit/src/watershed.cpp
+watershed.h
+/home/joana/Documents/Image Processing/Hw3/Submit/src/watershed.h
+utility
+-
+vector
+-
+algorithm
+-
+iostream
+-
+queue
+-
+
+/home/joana/Documents/Image Processing/Hw3/Submit/src/watershed.h
+vector
+-
+utility
+-
+algorithm
+-
+
