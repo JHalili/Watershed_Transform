@@ -35,12 +35,13 @@ vector<vector<int> > watershed(vector<vector<int> > &input) {
   vector<pair<int, position> > h_positions;
   int i = 0;
   for (int k = helper[0].first; k <= helper[helper.size() - 1].first; k++) {
-
+    bool executed = false;
     while(i < helper.size() && helper[i].first == k) {
+      executed = true;
       h_positions.push_back(helper[i]);
       i++;
     }
-
+    if(!executed) continue;
     // go through the same value h_positions
     for (size_t l = 0; l < h_positions.size(); l++) {
       //cout << h_positions.back().first << " " << h_positions.back().second.i << "--" << h_positions.back().second.j << " ";
@@ -50,7 +51,7 @@ vector<vector<int> > watershed(vector<vector<int> > &input) {
       getNeighbours(current, SE, output);
       for (int m = 0; m < 4; m++) {
         if (SE[m].i == current.i && SE[m].j == current.j)
-          continue;
+        continue;
         if (output[SE[m].i][SE[m].j] > 0 || output[SE[m].i][SE[m].j] == wshed) {
           output[current.i][current.j] = inqueue;
           myqueue.push(current);
@@ -65,7 +66,7 @@ vector<vector<int> > watershed(vector<vector<int> > &input) {
       getNeighbours(p, SE, output);
       for (int m = 0; m < 4; m++) {
         if (SE[m].i == p.i && SE[m].j == p.j)
-          continue;
+        continue;
         if (output[SE[m].i][SE[m].j] > 0) {
           if (output[p.i][p.j] == inqueue || (output[p.i][p.j] == wshed && flag)) {
             output[p.i][p.j] = output[SE[m].i][SE[m].j];
@@ -77,10 +78,10 @@ vector<vector<int> > watershed(vector<vector<int> > &input) {
           if (output[p.i][p.j] == inqueue) {
             output[p.i][p.j]  = wshed;
             flag = true;
-          } else if (output[SE[m].i][SE[m].j] == mask) {
-            output[SE[m].i][SE[m].j] = inqueue;
-            myqueue.push(SE[m]);
           }
+        }else if (output[SE[m].i][SE[m].j] == mask) {
+          output[SE[m].i][SE[m].j] = inqueue;
+          myqueue.push(SE[m]);
         }
       }
     }
@@ -99,7 +100,7 @@ vector<vector<int> > watershed(vector<vector<int> > &input) {
           getNeighbours(q, SE, output);
           for (int m = 0; m < 4; m++) {
             if (SE[m].i == q.i && SE[m].j == q.j)
-              continue;
+            continue;
             if (output[SE[m].i][SE[m].j] == mask) {
               myqueue.push(SE[m]);
               output[SE[m].i][SE[m].j] = current_label;
