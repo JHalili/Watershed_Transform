@@ -16,5 +16,5 @@ typedef struct pos{
 }position;
 
 extern std::vector< std::vector<int> > watershed(std::vector< std::vector<int> > &f_i);
-extern void getNeighbours(position current, position SE[], std::vector<std::vector<std::pair<int, bool> > > &output);
+extern void getNeighbours(position current, position SE[], std::vector<std::vector<int> > &output);
 #endif  /// WATERSHED_H

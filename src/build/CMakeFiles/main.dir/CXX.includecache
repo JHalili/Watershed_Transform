@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/joana/Documents/Image Processing/Hw3/Submit/src/csv.cpp
+/home/rubin/Dropbox/Fall_2016/IMAGE_PROCESSING/Homeworks/Homework_3/src/csv.cpp
 vector
 -
 string
@@ -20,25 +20,25 @@ cstdlib
 sstream
 -
 csv.h
-/home/joana/Documents/Image Processing/Hw3/Submit/src/csv.h
+/home/rubin/Dropbox/Fall_2016/IMAGE_PROCESSING/Homeworks/Homework_3/src/csv.h
 
-/home/joana/Documents/Image Processing/Hw3/Submit/src/csv.h
+/home/rubin/Dropbox/Fall_2016/IMAGE_PROCESSING/Homeworks/Homework_3/src/csv.h
 vector
 -
 
-/home/joana/Documents/Image Processing/Hw3/Submit/src/main.cpp
+/home/rubin/Dropbox/Fall_2016/IMAGE_PROCESSING/Homeworks/Homework_3/src/main.cpp
 iostream
 -
 unistd.h
 -
 csv.h
-/home/joana/Documents/Image Processing/Hw3/Submit/src/csv.h
+/home/rubin/Dropbox/Fall_2016/IMAGE_PROCESSING/Homeworks/Homework_3/src/csv.h
 watershed.h
-/home/joana/Documents/Image Processing/Hw3/Submit/src/watershed.h
+/home/rubin/Dropbox/Fall_2016/IMAGE_PROCESSING/Homeworks/Homework_3/src/watershed.h
 
-/home/joana/Documents/Image Processing/Hw3/Submit/src/watershed.cpp
+/home/rubin/Dropbox/Fall_2016/IMAGE_PROCESSING/Homeworks/Homework_3/src/watershed.cpp
 watershed.h
-/home/joana/Documents/Image Processing/Hw3/Submit/src/watershed.h
+/home/rubin/Dropbox/Fall_2016/IMAGE_PROCESSING/Homeworks/Homework_3/src/watershed.h
 utility
 -
 vector
@@ -50,7 +50,7 @@ iostream
 queue
 -
 
-/home/joana/Documents/Image Processing/Hw3/Submit/src/watershed.h
+/home/rubin/Dropbox/Fall_2016/IMAGE_PROCESSING/Homeworks/Homework_3/src/watershed.h
 vector
 -
 utility

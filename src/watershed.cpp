@@ -13,16 +13,16 @@ bool pairCompare(const pair<int, position>& firstElem, const pair<int, position 
 vector<vector<int> > watershed(vector<vector<int> > &input) {
   // initializing process
   vector<pair<int, position> > helper;
-  vector<vector<pair<int, bool> > > output;
+  vector<vector<int> > output;
   queue<position> myqueue;
   position SE[4];
   uint current_label = 0;
   bool flag = false;
 
   for (size_t i = 0; i < input.size(); i++) {
-    vector<pair<int, bool> > a;
+    vector<int> a;
     for (size_t j = 0; j < input[i].size(); j++) {
-      a.push_back(make_pair(init, false));
+      a.push_back(init);
       position p = {i, j};
       helper.push_back(make_pair(input[i][j], p));
     }
@@ -45,14 +45,14 @@ vector<vector<int> > watershed(vector<vector<int> > &input) {
     for (size_t l = 0; l < h_positions.size(); l++) {
       //cout << h_positions.back().first << " " << h_positions.back().second.i << "--" << h_positions.back().second.j << " ";
       position current = {h_positions[l].second.i, h_positions[l].second.j};
-      output[current.i][current.j].first = mask;
+      output[current.i][current.j] = mask;
       // finding neighbours
       getNeighbours(current, SE, output);
       for (int m = 0; m < 4; m++) {
         if (SE[m].i == current.i && SE[m].j == current.j)
           continue;
-        if (output[SE[m].i][SE[m].j].first > 0 || output[SE[m].i][SE[m].j].first == wshed) {
-          output[current.i][current.j].second = true;
+        if (output[SE[m].i][SE[m].j] > 0 || output[SE[m].i][SE[m].j] == wshed) {
+          output[current.i][current.j] = inqueue;
           myqueue.push(current);
         }
       }
@@ -66,19 +66,19 @@ vector<vector<int> > watershed(vector<vector<int> > &input) {
       for (int m = 0; m < 4; m++) {
         if (SE[m].i == p.i && SE[m].j == p.j)
           continue;
-        if (output[SE[m].i][SE[m].j].first > 0) {
-          if (output[p.i][p.j].second || (output[p.i][p.j].first == wshed && flag)) {
-            output[p.i][p.j].first = output[SE[m].i][SE[m].j].first;
-          } else if (output[p.i][p.j].first > 0 && output[p.i][p.j] != output[SE[m].i][SE[m].j]) {
-            output[p.i][p.j].first  = wshed;
+        if (output[SE[m].i][SE[m].j] > 0) {
+          if (output[p.i][p.j] == inqueue || (output[p.i][p.j] == wshed && flag)) {
+            output[p.i][p.j] = output[SE[m].i][SE[m].j];
+          } else if (output[p.i][p.j] > 0 && output[p.i][p.j] != output[SE[m].i][SE[m].j]) {
+            output[p.i][p.j]  = wshed;
             flag = false;
           }
-        } else if (output[SE[m].i][SE[m].j].first == wshed) {
-          if (output[p.i][p.j].second) {
-            output[p.i][p.j].first  = wshed;
+        } else if (output[SE[m].i][SE[m].j] == wshed) {
+          if (output[p.i][p.j] == inqueue) {
+            output[p.i][p.j]  = wshed;
             flag = true;
-          } else if (output[SE[m].i][SE[m].j].first == mask) {
-            output[SE[m].i][SE[m].j].second = true;
+          } else if (output[SE[m].i][SE[m].j] == mask) {
+            output[SE[m].i][SE[m].j] = inqueue;
             myqueue.push(SE[m]);
           }
         }
@@ -89,10 +89,10 @@ vector<vector<int> > watershed(vector<vector<int> > &input) {
     while (!h_positions.empty()) {
       position p = {h_positions.back().second.i, h_positions.back().second.j};
       h_positions.pop_back();
-      if (output[p.i][p.j].first == mask) {
+      if (output[p.i][p.j] == mask) {
         current_label++;
         myqueue.push(p);
-        output[p.i][p.j].first = current_label;
+        output[p.i][p.j] = current_label;
         while (!myqueue.empty()) {
           position q = myqueue.front();
           myqueue.pop();
@@ -100,9 +100,9 @@ vector<vector<int> > watershed(vector<vector<int> > &input) {
           for (int m = 0; m < 4; m++) {
             if (SE[m].i == q.i && SE[m].j == q.j)
               continue;
-            if (output[SE[m].i][SE[m].j].first == mask) {
+            if (output[SE[m].i][SE[m].j] == mask) {
               myqueue.push(SE[m]);
-              output[SE[m].i][SE[m].j].first = current_label;
+              output[SE[m].i][SE[m].j] = current_label;
             }
           }
         }
@@ -114,7 +114,7 @@ vector<vector<int> > watershed(vector<vector<int> > &input) {
   for (int i = 0; i < output.size(); i++) {
     vector<int> a;
     for (int j = 0; j < output[i].size(); j++) {
-      a.push_back(output[i][j].first);
+      a.push_back(output[i][j]);
     }
     result.push_back(a);
     a.clear();
@@ -122,7 +122,7 @@ vector<vector<int> > watershed(vector<vector<int> > &input) {
   return result;
 }
 
-void getNeighbours(position current, position SE[], vector<vector<pair<int, bool> > > &output) {
+void getNeighbours(position current, position SE[], vector<vector<int> > &output) {
   if (current.i == 0) {
     SE[0] = {current.i, current.j};
   } else {
