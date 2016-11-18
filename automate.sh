@@ -11,12 +11,13 @@ make
 
 # Run project
 echo ""
-./main ../$INPUT_DIR/f1_dinv.txt ../$OUTPUT_DIR/f1_dinv_output.txt
-echo "[33%] f1_dinv_output.txt"
-./main ../$INPUT_DIR/f2.txt ../$OUTPUT_DIR/f2_output.txt
-echo "[66%] f1_output.txt"
-./main ../$INPUT_DIR/test.txt ../$OUTPUT_DIR/test_output.txt
-echo "[100%] myimage_output.txt"
+./main ../$INPUT_DIR/f1_dinv.txt ../$OUTPUT_DIR/f1_dinv_wt.txt
+echo "[33%] f1_dinv_wt.txt"
+./main ../$INPUT_DIR/f2.txt ../$OUTPUT_DIR/f2_wt.txt
+echo "[66%] f2_wt.txt"
+./main ../$INPUT_DIR/test.txt ../$OUTPUT_DIR/test_wt.txt
+echo "[100%] test_wt.txt"
+
 # Cleanup
 cd ..
 rm -r build

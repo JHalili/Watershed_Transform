@@ -43,16 +43,10 @@ void write_csv(vector<vector<int> > image, const char* file_name) {
 
 	for (size_t i = 0; i <  image.size(); i++) {
 		for (size_t j = 0; j < image[i].size(); j++) {
-			if(image[i][j] < 10){
-				output_file << image[i][j] << "  ";
-			}
-			else if(image[i][j] < 100){
-				output_file << image[i][j] << " ";
-			}else{
-				output_file << image[i][j];
-			}
-			if (!(j == image.size() - 1) && !(j == image[i].size() - 1) )
-				output_file << ",";
+			output_file << image[i][j];
+
+			if (!(j == image[i].size() - 1))
+				output_file << " ,";
 
 		}
 		output_file << endl;
